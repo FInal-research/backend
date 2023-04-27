@@ -1,4 +1,3 @@
-const { ObjectId } = require("mongodb");
 const mongoose = require("mongoose");
 
 const schema = mongoose.Schema;
@@ -6,7 +5,7 @@ const schema = mongoose.Schema;
 const predictionSchema = new schema(
   {
     userId: {
-      type: ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       required: true,
     },
     predictionScore: {
