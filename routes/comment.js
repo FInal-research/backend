@@ -1,5 +1,5 @@
 const { checkVariables, authentication } = require("../middlewares/helper");
-const { Comment } = require("../models/Articles");
+const { Comment } = require("../models/Comment");
 
 const router = require("express").Router();
 
@@ -10,7 +10,8 @@ router.post(
   async (req, res) => {
     try {
       const data = req.body;
-      const comment = new Comment(data);
+      const userId = req.user;
+      const comment = new Comment(data, userId);
 
       const response = await comment.save();
       return res.send(200, response);
@@ -19,12 +20,6 @@ router.post(
       return res.send(500, "Comment Add error");
     }
   }
-);
-
-router.get(
-  "/prediction/getPredictions",
-  authentication,
-  async (req, res) => {}
 );
 
 module.exports = router;

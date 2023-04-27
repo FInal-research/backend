@@ -1,4 +1,3 @@
-const { ObjectId } = require("mongodb");
 const mongoose = require("mongoose");
 
 const schema = mongoose.Schema;
@@ -10,11 +9,17 @@ const commentSchema = new schema(
       require: true,
     },
     articleId: {
-      type: ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
+      require: true,
+    },
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
       require: true,
     },
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Comment", commentSchema);
+const Comment = mongoose.model("Comment", commentSchema);
+
+module.exports = Comment;

@@ -14,24 +14,15 @@ const articlesSchema = new schema(
       require: true,
     },
     comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
-  },
-
-  { timestamps: true }
-);
-const commentSchema = new schema(
-  {
-    comment: {
-      type: String,
-      require: true,
-    },
-    articleId: {
+    userId: {
       type: mongoose.Schema.Types.ObjectId,
       require: true,
     },
   },
+
   { timestamps: true }
 );
-const Articles = mongoose.model("Article", articlesSchema);
-const Comment = mongoose.model("Comment", commentSchema);
 
-module.exports = { Articles, Comment };
+const Articles = mongoose.model("Article", articlesSchema);
+
+module.exports = Articles;

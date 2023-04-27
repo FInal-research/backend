@@ -1,6 +1,5 @@
 const { checkVariables, authentication } = require("../middlewares/helper");
 const Prediction = require("../models/Prediction");
-
 const router = require("express").Router();
 
 router.post(
